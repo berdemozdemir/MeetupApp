@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-import classes from "./NewMeetupFrom.module.css";
 import { useRouter } from "next/router";
 
 function NewMeetupForm(props) {
@@ -28,12 +27,12 @@ function NewMeetupForm(props) {
 
     props.onAddNewMeetup(formData);
 
-    router.push("/")
+    router.push("/");
   }
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <div className={classes.inputs}>
+    <form onSubmit={submitHandler} className="shadow-2xl p-2 rounded">
+      <div className="flex flex-col [&>label]:my-2 [&>label]:font-bold [&>label]:text-2xl [&>input]:border-2 [&>input]:border-solid [&>input]:p-1">
         <label htmlFor="title">Meetup Title</label>
         <input id="title" required type="text" ref={titleInputRef} />
 
@@ -49,11 +48,14 @@ function NewMeetupForm(props) {
           id="description"
           required
           type="text"
+          className="border-2 border-solid "
           ref={descriptionInputRef}
         />
       </div>
-      <div className={classes.actions}>
-        <button>Add Meetup</button>
+      <div className="text-right mt-4">
+        <button className="bg-[#8f1a47] py-2 px-3 text-white rounded font-bold mr-1 cursor-pointer hover:bg-[#a50e48] hover:border-[#a50e48]">
+          Add Meetup
+        </button>
       </div>
     </form>
   );

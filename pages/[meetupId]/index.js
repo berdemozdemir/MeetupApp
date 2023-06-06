@@ -14,6 +14,8 @@ function MeetupDetailPage(props) {
   );
 }
 
+export default MeetupDetailPage;
+
 export async function getStaticPaths() {
   const { client, db } = await connectToDB("meetups");
   const myCollection = db.collection("myMeetups");
@@ -35,12 +37,12 @@ export async function getStaticProps(context) {
 
   const { client, db } = await connectToDB("meetups");
   const myCollection = db.collection("myMeetups");
-  
+
   const selectedMeetup = await myCollection.findOne({
     _id: new ObjectId(meetupId),
   });
 
-  client.close(); 
+  client.close();
 
   return {
     props: {
@@ -54,5 +56,3 @@ export async function getStaticProps(context) {
     },
   };
 }
-
-export default MeetupDetailPage;

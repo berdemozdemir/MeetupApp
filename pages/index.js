@@ -2,8 +2,10 @@ import MeetupList from "../components/meetups/MeetupList";
 import { connectToDB } from "../services/db";
 
 function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />
+  return <MeetupList meetups={props.meetups} />;
 }
+
+export default HomePage;
 
 export async function getStaticProps() {
   const { db, client } = await connectToDB("meetups");
@@ -24,8 +26,6 @@ export async function getStaticProps() {
       })),
     },
 
-    revalidate: 3600,
+    revalidate: 60 * 60 * 24,
   };
 }
-
-export default HomePage;

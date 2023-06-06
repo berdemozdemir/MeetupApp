@@ -20,8 +20,6 @@ async function handler(req, res) {
 
     const myMeetups = db.collection("myMeetups");
 
-    console.log(data);
-
     await myMeetups
       .insertOne(data)
       .then(() => {
