@@ -6,8 +6,7 @@ async function handler(req, res) {
 
     let client;
 
-    const url =
-      "mongodb+srv://emre:7z1GLTNv1BnIPz0K@cluster0.9etgvdy.mongodb.net/";
+    const url = process.env.DB_URL;
 
     try {
       client = new MongoClient(url);
